@@ -14,20 +14,20 @@ const GsapScrollTrigger = () => {
 
     boxes.forEach((box) => {
       gsap.to(box, {
-        x: 150,
+        x: 150 * (boxes.indexOf(box) + 5),
         rotation: 360,
         borderRadius: '100%',
         scale: 1.5,
         scrollTrigger: {
           trigger: box,
-          start: 'bottom, bottom',  // start the animation when the bottom of the box reaches the bottom of the viewport
+          start: 'bottom bottom',  // start the animation when the bottom of the box reaches the bottom of the viewport
           end: 'top 20%', // end the animation when the top of the box reaches 20% of the viewport height,
           scrub: true, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
         },
         ease: 'power1.inOut',
       })
     })
-  }, [])
+  }, {scope: scrollRef});
 
   return (
     <main>
