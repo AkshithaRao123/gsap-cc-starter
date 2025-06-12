@@ -10,7 +10,14 @@ const GsapStagger = () => {
       borderRadius: "50%",
       repeat: -1,
       yoyo: true,
-      stagger: 0.5 // animate each element of stagger block one by one with delay 0.5s
+      // stagger: 0.5, // animate each element of stagger block one by one with delay 0.5s
+      stagger: {
+        amount: 0.5,
+        grid: [2,1],
+        axis: "y",
+        ease: "circ.inOut",
+        from: "center",
+      }
     })
   }, [])
 
