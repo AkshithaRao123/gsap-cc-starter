@@ -1,5 +1,33 @@
+import gsap from "gsap";
+import {useGSAP} from "@gsap/react"
+
 const GsapTimeline = () => {
   // TODO: Implement the gsap timeline
+
+  // Used in case you want multiple animations for the same element
+  // or if you want to control the animations (play, pause, reverse, etc.)
+  const timeline = gsap.timeline({
+    repeat: -1,
+    repeatDelay: 0,
+    yoyo: true,
+  });
+
+  useGSAP(() => {
+    timeline.to("#yellow-box", {
+      x: 250,
+      rotation: 360,
+      borderRadius: "100%",
+      duration: 2,
+      ease: "back.inOut",
+    })
+    timeline.to("#yellow-box", {
+      x: 500,
+      rotation: -360,
+      borderRadius: "8%",
+      duration: 2,
+      ease: "back.inOut",
+    })
+  }, []);
 
   return (
     <main>
@@ -38,6 +66,8 @@ const GsapTimeline = () => {
         <button onClick={() => {}}>Play/Pause</button>
 
         <div id="yellow-box" className="w-20 h-20 bg-yellow-500 rounded-lg" />
+
+        <div id="green-box" className="w-20 h-20 bg- rounded-lg bg-green-300" />
       </div>
     </main>
   );

@@ -1,5 +1,28 @@
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
 const GsapFromTo = () => {
   // TODO: Implement the gsap.fromTo() method
+  useGSAP(() => {
+    gsap.fromTo("#red-box", 
+      {  // from state
+        x: 0,
+        rotation: 0,
+        borderRadius: "0%",
+      },
+      {  // to state
+        x: 250,
+        y: 100,
+        rotate: 360,
+        borderRadius: "100%",
+        duration: 2,
+        delay: 1,  // Delay the start of the animation by 1 second
+        scale: 3,
+        repeat: -1,  // Infinite repeat
+        yoyo: true , // Reverse the animation on each repeat
+        ease: "bounce.out"  // Animation type
+    })
+  }, [])
 
   return (
     <main>
